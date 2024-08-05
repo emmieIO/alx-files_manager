@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/extensions
 import db from '../utils/db.js';
+import redisClient from '../utils/redis.js';
 
 export function getStats(req, res) {
   const stats = {
@@ -10,8 +11,8 @@ export function getStats(req, res) {
 }
 
 export function getStatus(req, res) {
-  if (db.isAlive()) {
-    return res.status(200).send({ db: true });
+  if (db.isAlive() && redisClient.isAlive()) {
+    return res.status(200).send({ redis: true, db: true });
   }
   return res.status(500).send({ db: false });
 }
