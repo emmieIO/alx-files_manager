@@ -1,8 +1,9 @@
 import express from 'express';
-import { getStats, getStatus } from '../controllers/AppController.js';
-
+import AppController from '../controllers/AppController.js';
+import UsersController from '../controllers/UsersController.js';
 const router = express.Router();
-router.get('/stats', getStats);
-router.get('/status', getStatus);
+router.get('/stats', AppController.getStats);
+router.get('/status', AppController.getStatus);
+router.post('/users', UsersController.postNew);
 
 export default router;

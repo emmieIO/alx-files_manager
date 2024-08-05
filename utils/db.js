@@ -18,10 +18,11 @@ class DBClient {
     return this.db !== undefined;
   }
 
-  async nbUsers() {
-    // const usersInsert = await this.db.collection('users').insertOne({username:'test',email:'test1@gmail', password:"12345"});
-    // console.log(usersInsert);
-    
+  async getCollection(name){
+    return await this.db.collection(name);
+  }
+
+  async nbUsers() {    
     return await this.db.collection('users').countDocuments();
   }
 
