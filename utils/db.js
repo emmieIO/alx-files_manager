@@ -19,7 +19,10 @@ class DBClient {
   }
 
   async nbUsers() {
-    return this.db.collection('users').countDocuments();
+    // const usersInsert = await this.db.collection('users').insertOne({username:'test',email:'test1@gmail', password:"12345"});
+    // console.log(usersInsert);
+    
+    return await this.db.collection('users').countDocuments();
   }
 
   async nbFiles() {

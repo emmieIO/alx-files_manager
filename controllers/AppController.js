@@ -2,10 +2,10 @@
 import db from '../utils/db.js';
 import redisClient from '../utils/redis.js';
 
-export function getStats(req, res) {
+export async function getStats(req, res) {
   const stats = {
-    users: db.nbUsers(),
-    files: db.nbFiles(),
+    users: await db.nbUsers(),
+    files: await db.nbFiles(),
   };
   res.status(200).send(stats);
 }
